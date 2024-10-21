@@ -1,0 +1,32 @@
+services:
+  sdv-api:
+    container_name: dev-sdv-api
+    build: 
+      context: ./sdv-api
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./sdv-api:/usr/src/app
+    networks:
+      - dev-sdv
+    command: ["cargo-watch", "-x", "run"]
+
+  sdv-web:
+    container_name: dev-sdv-web
+    build: 
+      context: ./sdv-web
+      dockerfile: Dockerfile.dev
+    environment:
+      - API_URL=http://dev-sdv-api:8000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./sdv-web:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - dev-sdv
+
+networks:
+  dev-sdv:
+    driver: bridge

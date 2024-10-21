@@ -81,3 +81,8 @@ The project uses Docker Hub to store the Docker images. The images are automatic
 ## Authors
 
 - __Jarod Guichard__
+
+### Liens
+
+- [GitHub](https://github.com/Dassault7/sdv-m1do-containers-project)
+- [Docker Hub](https://hub.docker.com/repositories/dassault7)

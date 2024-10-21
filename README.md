@@ -14,7 +14,13 @@ You can also install [cargo-watch](https://crates.io/crates/cargo-watch) to watc
 
 #### Using Docker
 
-> TODO
+You can use the compose.yml file to start the dev environment.
+
+```bash
+docker-compose up -d  # -d or --detach to run in background
+```
+
+You can also use an argument to specify the service you want to run, like `docker-compose up -d sdv-api`.
 
 ### Web
 
@@ -24,7 +30,13 @@ Use `npm install` to install all dependancies, and `npm run dev` to start the de
 
 #### Using Docker
 
-> TODO
+You can use the compose.yml file to start the dev environment.
+
+```bash
+docker-compose up -d  # -d or --detach to run in background
+```
+
+You can also use an argument to specify the service you want to run, like `docker-compose up -d sdv-web`.
 
 ## Production
 
@@ -36,7 +48,11 @@ Run `cargo build --release` to build and compile the app. This will create an ex
 
 #### Using Docker
 
-> TODO
+To build the Docker image for the production environment, run the following command in the root directory of the project (sdv-api):
+
+```bash
+docker build -t <image-name:tag> .
+```
 
 ### Web
 
@@ -46,4 +62,22 @@ Run `npm run build` to build the application, and run `npm run start` to start t
 
 #### Using Docker
 
-> TODO
+To build the Docker image for the production environment, run the following command in the root directory of the project (sdv-web):
+
+```bash
+docker build -t <image-name:tag> .
+```
+
+## CI/CD
+
+### GitHub Actions
+
+The project uses GitHub Actions to automate the CI/CD process. The workflow is defined in the `.github/workflows` directory.
+
+### Docker Hub
+
+The project uses Docker Hub to store the Docker images. The images are automatically pushed to Docker Hub when a new release is created, and pushed to the `main` branch.
+
+## Authors
+
+- __Jarod Guichard__

@@ -1,0 +1,19 @@
+name: Build and Publish Docker Image
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  publish_images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build images
+        run: docker build -t dassault7/sdv-api:latest
+      
+      - name: Push image to Docker Hub
+        run: |
+          docker login -u dassault7 -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push dassault7/sdv-api:latest

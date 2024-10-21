@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Build images
-        run: docker build -t dassault7/sdv-api:latest
+        run: docker build -t dassault7/sdv-api:latest ./sdv-api/
       
       - name: Push image to Docker Hub
         run: |

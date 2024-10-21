@@ -1,29 +1,15 @@
-# FROM node:23.0.0 as builder
+FROM node:23.0.0
 
-# WORKDIR /usr/src/app
+WORKDIR /usr/src/app
 
-# COPY package*.json ./
+COPY package*.json ./
 
-# RUN npm install
+RUN npm install
 
-# COPY . .
+COPY . .
 
-# RUN npm run build
+RUN npm run build
 
-# # # For PROD
-# # FROM node:23.0.0-alpine
+EXPOSE 3000
 
-# # WORKDIR /usr/src/app
-
-# # COPY --from=builder /usr/src/app/package*.json ./
-
-# # RUN npm install --only=production
-
-# # COPY --from=builder /usr/src/app/dist ./
-
-# # EXPOSE 3000
-
-# # CMD ["node", "server.js"]
-
-# # Keep Alive
-# CMD [ "tail", "-f", "/dev/null" ]
+CMD ["npm", "run", "start"]

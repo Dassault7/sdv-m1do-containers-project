@@ -1,19 +1,21 @@
-name: Build and Publish Docker Image
+name: Build and Publish Docker Image for SDV-WEB
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - "sdv-web/**"
 
 jobs:
-  publish_images:
+  sdv-web:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       
       - name: Build images
-        run: docker build -t dassault7/sdv-api:latest ./sdv-api/
+        run: docker build -t dassault7/sdv-web:latest ./sdv-web/
       
       - name: Push image to Docker Hub
         run: |
           docker login -u dassault7 -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push dassault7/sdv-api:latest
+          docker push dassault7/sdv-web:latest
